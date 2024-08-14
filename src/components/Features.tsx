@@ -45,7 +45,7 @@ export default function Features() {
     )
   }
   
-  function BoltIcon(props) {
+  function BoltIcon(props: React.SVGProps<SVGSVGElement>) {
     return (
       <svg
         {...props}
@@ -66,7 +66,7 @@ export default function Features() {
   }
   
   
-  function MoveHorizontalIcon(props) {
+  function MoveHorizontalIcon(props: React.SVGProps<SVGSVGElement>) {
     return (
       <svg
         {...props}
@@ -88,7 +88,7 @@ export default function Features() {
   }
   
   
-  function ShieldCheckIcon(props) {
+  function ShieldCheckIcon(props: React.SVGProps<SVGSVGElement>) {
     return (
       <svg
         {...props}

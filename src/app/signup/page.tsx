@@ -107,7 +107,8 @@ const Signup = () => {
     </div>
   )
 
-  function Health(props) {
+  function Health(props: React.SVGProps<SVGSVGElement>) {
+
     return (
       <svg 
         xmlns="http://www.w3.org/2000/svg"
