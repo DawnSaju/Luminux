@@ -12,7 +12,7 @@ export default function Navbar() {
     return (
         <div className="flex items-center justify-between px-6 py-4 bg-transparent">
           <div className="container flex items-center justify-between px-4 md:px-6">
-          <Link href="/" className="flex items-center space-x-2" prefetch={false}>
+          <Link href="/" className="flex items-center space-x-2">
             <span className="sr-only">Luminux</span>
             <Health className="h-6 w-6" />
             <span className="font-bold tracking-tight">Luminux</span>
@@ -21,28 +21,24 @@ export default function Navbar() {
             <Link
               href="#home"
               className="text-gray-900 hover:text-gray-900/90 dark:text-gray-50 dark:hover:text-gray-50/90"
-              prefetch={false}
             >
               Home
             </Link>
             <Link
               href="#features"
               className="text-gray-900 hover:text-gray-900/90 dark:text-gray-50 dark:hover:text-gray-50/90"
-              prefetch={false}
             >
               Features
             </Link>
             <Link
               href="#process"
               className="text-gray-900 hover:text-gray-900/90 dark:text-gray-50 dark:hover:text-gray-50/90"
-              prefetch={false}
             >
               Process
             </Link>
             <Link
               href="#team"
               className="text-gray-900 hover:text-gray-900/90 dark:text-gray-50 dark:hover:text-gray-50/90"
-              prefetch={false}
             >
               Team
             </Link>
@@ -52,7 +48,6 @@ export default function Navbar() {
               <Button
                 onClick={() => signOut({ callbackUrl: '/', redirect:true })}
                 className="text-sm font-medium text-gray-500  dark:text-gray-400 dark:hover:bg-gray-500/40 dark:hover:text-white bg-transparent"
-                prefetch={false}
               >
                 Sign out
               </Button>
@@ -60,7 +55,6 @@ export default function Navbar() {
               <Button
                 onClick={() => signIn('luminux', { callbackUrl: '/chat' })} 
                 className="text-sm font-medium text-gray-500  dark:text-gray-400 dark:hover:bg-gray-500/40 dark:hover:text-white bg-transparent"
-                prefetch={false}
               >
                 Sign in
               </Button>
@@ -69,7 +63,6 @@ export default function Navbar() {
               <Link
                 href={"/chat"}
                 className="inline-block text-sm font-medium rounded-md border border-transparent shadow-sm h-8 px-3 flex items-center justify-center bg-gray-900 text-gray-50 hover:bg-gray-900/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 dark:bg-gray-50 dark:text-gray-900 dark:hover:bg-gray-50/90 dark:focus-visible:ring-gray-300"
-                prefetch={false}
               >
                 Chat
               </Link>
@@ -77,7 +70,6 @@ export default function Navbar() {
               <Link
               href="#"
               className="inline-block text-sm font-medium rounded-md border border-transparent shadow-sm h-8 px-3 flex items-center justify-center bg-gray-900 text-gray-50 hover:bg-gray-900/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 dark:bg-gray-50 dark:text-gray-900 dark:hover:bg-gray-50/90 dark:focus-visible:ring-gray-300"
-              prefetch={false}
             >
               Get Started
             </Link>
