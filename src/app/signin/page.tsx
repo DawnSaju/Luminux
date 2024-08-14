@@ -1,28 +1,28 @@
-"use client"
+"use client";
 
-import Image from "next/image"
-import Link from "next/link"
-import { useState, useEffect } from "react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { useSearchParams } from 'next/navigation'
-import { signIn } from "next-auth/react"
-import { useSession } from "next-auth/react"
-import { useRouter } from "next/navigation"
-import Navbar from "@/components/Navbar"
+import Image from "next/image";
+import Link from "next/link";
+import { useState, useEffect } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { useSearchParams } from 'next/navigation';
+import { signIn } from "next-auth/react";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import Navbar from "@/components/Navbar";
 
-export function Signin() {
-  const searchParams = useSearchParams()
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const { data: session } = useSession()
-  const router = useRouter()
+const Signin = () => {
+  const searchParams = useSearchParams();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const { data: session } = useSession();
+  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(email)
-    console.log(password)
+    console.log(email);
+    console.log(password);
     const result = await signIn('credentials', {
       redirect: false,
       username: email,
@@ -39,9 +39,9 @@ export function Signin() {
 
   useEffect(() => {
     if (session) {
-      console.log(session)
+      console.log(session);
     }
-  }, [session])
+  }, [session]);
 
   return (
     <div>
@@ -54,7 +54,7 @@ export function Signin() {
           </Link>
         </div>
       </div>
-    
+
       <div className="w-full lg:grid lg:min-h-[600px] lg:grid-cols-2 xl:min-h-[800px]">
         <div className="flex items-center justify-center py-12">
           <div className="mx-auto grid w-[350px] gap-6">
@@ -91,10 +91,10 @@ export function Signin() {
                   Signin
                 </Button>
                 <Button onClick={() => signIn("google")} variant="outline" className="w-full">
-                    Continue with Google
+                  Continue with Google
                 </Button>
                 <Button onClick={() => signIn("github")} variant="outline" className="w-full">
-                    Continue with GitHub
+                  Continue with GitHub
                 </Button>
               </form>
             </div>
@@ -117,7 +117,7 @@ export function Signin() {
         </div>
       </div>
     </div>
-  )
+  );
 
   function Health(props) {
     return (
@@ -131,11 +131,11 @@ export function Signin() {
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
-    >
+      >
         <path d="M96 352L96 96c0-35.3 28.7-64 64-64l256 0c35.3 0 64 28.7 64 64l0 197.5c0 17-6.7 33.3-18.7 45.3l-58.5 58.5c-12 12-28.3 18.7-45.3 18.7L160 416c-35.3 0-64-28.7-64-64zM272 128c-8.8 0-16 7.2-16 16l0 48-48 0c-8.8 0-16 7.2-16 16l0 32c0 8.8 7.2 16 16 16l48 0 0 48c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16l0-48 48 0c8.8 0 16-7.2 16-16l0-32c0-8.8-7.2-16-16-16l-48 0 0-48c0-8.8-7.2-16-16-16l-32 0zm24 336c13.3 0 24 10.7 24 24s-10.7 24-24 24l-160 0C60.9 512 0 451.1 0 376L0 152c0-13.3 10.7-24 24-24s24 10.7 24 24l0 224c0 48.6 39.4 88 88 88l160 0z"/>
       </svg>
-    )
+    );
   }
 }
 
-export default Signin
+export default Signin;
