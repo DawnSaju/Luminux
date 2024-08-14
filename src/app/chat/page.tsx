@@ -116,9 +116,15 @@ import Markdown from 'react-markdown'
 import { Button } from '@/components/ui/button'
 import { signIn, signOut, useSession } from 'next-auth/react';
 
+interface User {
+  name?: string | null;
+  email?: string | null;
+  image?: string | null;
+}
+
 const Chat = () => {
   const [message, setMessage] = useState('');
-  const [user, setUser ] = useState(null);
+  const [user, setUser] = useState<User | null>(null);
   const [messages, setMessages] = useState([]);
   const router = useRouter()
   const [inputValue, setInputValue] = useState('');
@@ -127,7 +133,9 @@ const Chat = () => {
 
   useEffect(() => {
     if (status === "authenticated") {
-      setUser(session.user);
+      if (session?.user) {
+        setUser(session.user);
+      }
     } else if (status === "unauthenticated") {
       signIn();
     }
