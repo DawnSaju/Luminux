@@ -37,7 +37,7 @@ const authOption: NextAuthOptions = {
           where: { username: credentials.username },
         });
 
-        if (!user || !(await bcrypt.compare(credentials.password, user.password))) {
+        if (!user || !user.password || !(await bcrypt.compare(credentials.password, user.password))) {
           throw new Error('Invalid username or password');
         }
 
