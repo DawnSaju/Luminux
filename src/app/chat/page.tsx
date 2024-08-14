@@ -148,7 +148,7 @@ const Chat = () => {
     { text: "What are the benefits of eating fruits?", color: "text-gray-400" },
   ];
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
   };
 
