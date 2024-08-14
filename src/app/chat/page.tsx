@@ -106,14 +106,13 @@
 //   )
 // }
 
-"use client"
+"use client";
 
-import React from 'react';
-import { Send, Github } from 'lucide-react';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import Markdown from 'react-markdown'
-import { Button } from '@/components/ui/button'
+import { Send, Github } from 'lucide-react';
+import Markdown from 'react-markdown';
+import { Button } from '@/components/ui/button';
 import { signIn, signOut, useSession } from 'next-auth/react';
 
 interface User {
@@ -122,30 +121,35 @@ interface User {
   image?: string | null;
 }
 
+interface Message {
+  role: 'user' | 'assistant';
+  content: string;
+}
+
 const Chat = () => {
   const [message, setMessage] = useState('');
   const [user, setUser] = useState<User | null>(null);
-  const [messages, setMessages] = useState([]);
-  const router = useRouter()
+  const [messages, setMessages] = useState<Message[]>([]);
+  const router = useRouter();
   const [inputValue, setInputValue] = useState('');
 
   const { data: session, status } = useSession();
 
   useEffect(() => {
-    if (status === "authenticated") {
+    if (status === 'authenticated') {
       if (session?.user) {
         setUser(session.user);
       }
-    } else if (status === "unauthenticated") {
+    } else if (status === 'unauthenticated') {
       signIn();
     }
   }, [status, session]);
 
   const predefined = [
-    { text: "How can I improve my immune system?", color: "text-gray-400" },
-    { text: "What are the benefits of yoga?", color: "text-gray-400" },
-    { text: "How can I lose weight?", color: "text-gray-400" },
-    { text: "What are the benefits of eating fruits?", color: "text-gray-400" },
+    { text: 'How can I improve my immune system?', color: 'text-gray-400' },
+    { text: 'What are the benefits of yoga?', color: 'text-gray-400' },
+    { text: 'How can I lose weight?', color: 'text-gray-400' },
+    { text: 'What are the benefits of eating fruits?', color: 'text-gray-400' },
   ];
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -154,14 +158,14 @@ const Chat = () => {
 
   const handleSendMessage = async () => {
     if (inputValue.trim()) {
-      const userMessage = { role: 'user', content: inputValue };
+      const userMessage: Message = { role: 'user', content: inputValue };
       setMessages((messages) => [
         ...messages,
         userMessage,
         { role: 'assistant', content: '' },
       ]);
       setInputValue('');
-  
+
       const response = await fetch('/api/openai', {
         method: 'POST',
         headers: {
@@ -169,23 +173,23 @@ const Chat = () => {
         },
         body: JSON.stringify({ userMessage: userMessage.content, user: user }),
       });
-  
-      const reader = response.body.getReader();
+
+      const reader = response.body?.getReader();
       const decoder = new TextDecoder();
       let result = '';
-  
+
       while (true) {
-        const { done, value } = await reader.read();
+        const { done, value } = await reader?.read()!;
         if (done) break;
-  
+
         const chunk = decoder.decode(value, { stream: true });
         result += chunk;
-  
+
         setMessages((messages) => {
           const lastMessageIndex = messages.length - 1;
           const lastMessage = messages[lastMessageIndex];
           const otherMessages = messages.slice(0, lastMessageIndex);
-  
+
           return [
             ...otherMessages,
             { ...lastMessage, content: result },
@@ -193,9 +197,9 @@ const Chat = () => {
         });
       }
     }
-  };  
+  };
 
-  const handleKeyPress = (e) => {
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       handleSendMessage();
     }
@@ -206,16 +210,16 @@ const Chat = () => {
       <header className="flex justify-between items-center p-4 bg-[#1a1a1a]">
         <div className="flex items-center space-x-2">
           <div className="w-6 h-6 bg-white rounded-full">
-            { user ? (
-              <img src={user.image ? `${user.image}` : `${user.picture}`}></img>
+            {user ? (
+              <img src={user.image ?? `https://avatar.iran.liara.run/username?username=Unknown`} alt="User" />
             ) : (
-              <img src={`https://avatar.iran.liara.run/username?username=Unknown`}></img>
+              <img src={`https://avatar.iran.liara.run/username?username=Unknown`} alt="Unknown User" />
             )}
           </div>
-          { session ? (
-            <button onClick={() => signOut({ callbackUrl: '/', redirect:true })} className="font-semibold">Signout</button>
+          {session ? (
+            <button onClick={() => signOut({ callbackUrl: '/', redirect: true })} className="font-semibold">Sign out</button>
           ) : (
-            <button onClick={() => signIn('luminux', { callbackUrl: '/chat' })} className="font-semibold">Signin</button>
+            <button onClick={() => signIn('luminux', { callbackUrl: '/chat' })} className="font-semibold">Sign in</button>
           )}
         </div>
         <div className="flex items-center space-x-4">
@@ -232,9 +236,9 @@ const Chat = () => {
             <div className="space-y-4">
               {messages.map((message, index) => (
                 <div key={index} className={`p-3 rounded-lg ${message.role === 'user' ? 'bg-blue-600 ml-auto' : 'bg-[#1a1a1a]'} max-w-[80%]`}>
-                   <Markdown>
+                  <Markdown>
                     {message.content}
-                   </Markdown>
+                  </Markdown>
                 </div>
               ))}
             </div>
@@ -250,7 +254,7 @@ const Chat = () => {
             </div>
           )}
 
-           <div className="bg-[#1a1a1a] p-2 rounded-lg flex items-center">
+          <div className="bg-[#1a1a1a] p-2 rounded-lg flex items-center">
             <button className="p-2 text-gray-400 hover:text-white">
               <span className="text-2xl">+</span>
             </button>
