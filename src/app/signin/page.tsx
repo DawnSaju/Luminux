@@ -13,7 +13,6 @@ import { useRouter } from "next/navigation";
 import Navbar from "@/components/Navbar";
 
 const Signin = () => {
-  const searchParams = useSearchParams();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { data: session } = useSession();
