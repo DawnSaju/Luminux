@@ -104,7 +104,7 @@ export const Team = () => {
         </p>
       </div>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 gap-y-10">
+      <div className="grid md:grid-cols-2 lg:grid-cols-4 lg:flex justify-center items-center gap-8 gap-y-10">
         {teamList.map(
           ({ imageUrl, name, position, description, socialNetworks }: TeamProps) => (
             <Card
