@@ -56,23 +56,6 @@ const teamList: TeamProps[] = [
     ],
   },
   {
-    imageUrl: "https://media.licdn.com/dms/image/D4D03AQGO2jKQ86_w5g/profile-displayphoto-shrink_200_200/0/1719221326476?e=1728518400&v=beta&t=O1sUA9D21H4PZTzXG71uTfmNC2yKNlj5NJbcHG2_Gl0",
-    name: "Insha Kahar",
-    position: "Frontend Dev & UI Designer",
-    description: "SWE Student @42Abudhabi UAE",
-    socialNetworks: [
-      {
-        name: "Linkedin",
-        url: "https://www.linkedin.com/in/insha-kahar-7a2013294/",
-      },
-
-      {
-        name: "Instagram",
-        url: "https://www.instagram.com/artofication",
-      },
-    ],
-  },
-  {
     imageUrl: "https://media.licdn.com/dms/image/D5603AQG3b1u_kQo-yw/profile-displayphoto-shrink_200_200/0/1688666918257?e=1728518400&v=beta&t=NLoFeQA_c8bcKkNAJU-x5YMYD-Q84I34NjBwOmQZwwE",
     name: "Sivaibala Karthikeyan",
     position: "Creative Director",
