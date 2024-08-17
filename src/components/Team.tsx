@@ -26,7 +26,7 @@ const teamList: TeamProps[] = [
   {
     imageUrl: "https://media.licdn.com/dms/image/v2/D4D35AQEigwtYamyGVQ/profile-framedphoto-shrink_800_800/profile-framedphoto-shrink_800_800/0/1709567111341?e=1724508000&v=beta&t=5o0PLne8TeVE-iclqdGAxY59MLSWLWBk-_M1HwXykrE",
     name: "Abhishek Shrestha",
-    position: "Spokesperson & Software Tester",
+    position: "Software Tester",
     description: `Senior @Northern Kentucky University `,
     socialNetworks: [
       {
