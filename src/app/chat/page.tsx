@@ -112,7 +112,7 @@ const Chat = () => {
           {user ? (
             <button className="font-semibold">{user.name}</button>
           ) : (
-            <button className="font-semibold">""</button>      
+            <button className="font-semibold">{'""'}</button>      
           )}
         </div>
         <div className="flex items-center space-x-4">
