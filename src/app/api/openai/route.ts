@@ -17,7 +17,7 @@ export async function POST(req: Request) {
       return new Response(JSON.stringify({ error: "Unauthorized" }), { status: 401 });
     }
 
-    const systemPrompt = process.env.KNOWLEDGE
+    const systemPrompt = process.env.KNOWLEDGE || "";
 
     const response = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
