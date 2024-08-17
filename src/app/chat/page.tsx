@@ -99,78 +99,85 @@ const Chat = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#111111] text-white">
-      <header className="flex justify-between items-center p-4 bg-[#1a1a1a]">
-        <div className="flex items-center space-x-2">
-          <div className="w-6 h-6 bg-white rounded-full">
-            {user ? (
-              <img src={user.image ?? user.picture ?? "https://avatar.iran.liara.run/username?username=Unknown"} alt="User" />
-            ) : (
-              <img src={`https://avatar.iran.liara.run/username?username=Unknown`} alt="Unknown User" />
-            )}
-          </div>
-          {user ? (
-            <button className="font-semibold">{user.name}</button>
-          ) : (
-            <button className="font-semibold">{'""'}</button>      
-          )}
-        </div>
-        <div className="flex items-center space-x-4">
-          {user ? (
-            <button onClick={() => signOut({ callbackUrl: '/', redirect: true })} className="flex items-center space-x-1 text-gray-300 hover:text-white">Sign out</button>
-          ) : (
-            <button onClick={() => signIn('luminux', { callbackUrl: '/chat' })} className="flex items-center space-x-1 text-gray-300 hover:text-white">Sign in</button>
-          )}
-        </div>
-      </header>
-
-      <main className="flex-grow flex flex-col justify-end items-center p-4 overflow-y-auto">
-        <div className="w-full max-w-2xl space-y-4">
-          {messages.length > 0 ? (
-            <div className="space-y-4">
-              {messages.map((message, index) => (
-                <div key={index} className={`p-3 rounded-lg ${message.role === 'user' ? 'bg-blue-600 ml-auto' : 'bg-[#1a1a1a]'} max-w-[80%]`}>
-                  <Markdown>
-                    {message.content}
-                  </Markdown>
-                </div>
-              ))}
+    <html>
+      <head>
+        <title>Luminux</title>
+      </head>
+      <body>
+        <div className="flex flex-col min-h-screen bg-[#111111] text-white">
+          <header className="flex justify-between items-center p-4 bg-[#1a1a1a]">
+            <div className="flex items-center space-x-2">
+              <div className="w-6 h-6 bg-white rounded-full">
+                {user ? (
+                  <img src={user.image ?? user.picture ?? "https://avatar.iran.liara.run/username?username=Unknown"} alt="User" />
+                ) : (
+                  <img src={`https://avatar.iran.liara.run/username?username=Unknown`} alt="Unknown User" />
+                )}
+              </div>
+              {user ? (
+                <button className="font-semibold">{user.name}</button>
+              ) : (
+                <button className="font-semibold">{'""'}</button>      
+              )}
             </div>
-          ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {predefined.map((query, index) => (
-                <div key={index} className={`bg-[#1a1a1a] p-3 rounded-lg dark:hover:bg-gray-500/20 ${query.color}`}>
-                  <Button className={`bg-transparent ${query.color} dark:hover:bg-transparent dark:hover:text-white`}>
-                    {query.text}
-                  </Button>
-                </div>
-              ))}
+            <div className="flex items-center space-x-4">
+              {user ? (
+                <button onClick={() => signOut({ callbackUrl: '/', redirect: true })} className="flex items-center space-x-1 text-gray-300 hover:text-white">Sign out</button>
+              ) : (
+                <button onClick={() => signIn('luminux', { callbackUrl: '/chat' })} className="flex items-center space-x-1 text-gray-300 hover:text-white">Sign in</button>
+              )}
             </div>
-          )}
+          </header>
 
-          <div className="bg-[#1a1a1a] p-2 rounded-lg flex items-center">
-            <button className="p-2 text-gray-400 hover:text-white">
-              <span className="text-2xl">+</span>
-            </button>
-            <input
-              type="text"
-              placeholder="Send a message."
-              className="flex-grow bg-transparent outline-none px-2 text-white"
-              value={inputValue}
-              onChange={handleInputChange}
-              onKeyPress={handleKeyPress}
-            />
-            <button className="p-2 text-gray-400 hover:text-white" onClick={handleSendMessage}>
-              <Send size={20} />
-            </button>
-          </div>
+          <main className="flex-grow flex flex-col justify-end items-center p-4 overflow-y-auto">
+            <div className="w-full max-w-2xl space-y-4">
+              {messages.length > 0 ? (
+                <div className="space-y-4">
+                  {messages.map((message, index) => (
+                    <div key={index} className={`p-3 rounded-lg ${message.role === 'user' ? 'bg-blue-600 ml-auto' : 'bg-[#1a1a1a]'} max-w-[80%]`}>
+                      <Markdown>
+                        {message.content}
+                      </Markdown>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {predefined.map((query, index) => (
+                    <div key={index} className={`bg-[#1a1a1a] p-3 rounded-lg dark:hover:bg-gray-500/20 ${query.color}`}>
+                      <Button className={`bg-transparent ${query.color} dark:hover:bg-transparent dark:hover:text-white`}>
+                        {query.text}
+                      </Button>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              <div className="bg-[#1a1a1a] p-2 rounded-lg flex items-center">
+                <button className="p-2 text-gray-400 hover:text-white">
+                  <span className="text-2xl">+</span>
+                </button>
+                <input
+                  type="text"
+                  placeholder="Send a message."
+                  className="flex-grow bg-transparent outline-none px-2 text-white"
+                  value={inputValue}
+                  onChange={handleInputChange}
+                  onKeyPress={handleKeyPress}
+                />
+                <button className="p-2 text-gray-400 hover:text-white" onClick={handleSendMessage}>
+                  <Send size={20} />
+                </button>
+              </div>
+            </div>
+          </main>
+
+          <footer className="text-center p-4 text-gray-400 text-sm">
+            Luminux Chatbot
+          </footer>
         </div>
-      </main>
-
-      <footer className="text-center p-4 text-gray-400 text-sm">
-        Luminux Chatbot
-      </footer>
-    </div>
+      </body>
+    </html>
   );
 };
 
