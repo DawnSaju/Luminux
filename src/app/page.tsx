@@ -20,7 +20,7 @@ export default function Home() {
         <meta property="og:description" content="A comprehensive health support chatbot providing reliable information and guidance for a healthy life." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://luminux.live" />
-        <meta property="og:image" content="https://github.com/DawnSaju/Luminux/blob/master/public/favicon.png?raw=true" />
+        <meta property="og:image" content="https://github.com/DawnSaju/Luminux/blob/master/public/og.png?raw=true" />
         <meta property="og:site_name" content="Luminux" />
 
         <meta name="keywords" content="health, chatbot, AI, support, guidance, healthy life" />
