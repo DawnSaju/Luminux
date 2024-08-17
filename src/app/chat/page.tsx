@@ -119,6 +119,7 @@ interface User {
   name?: string | null;
   email?: string | null;
   image?: string | null;
+  picture?: string | null;
 }
 
 interface Message {
@@ -211,22 +212,23 @@ const Chat = () => {
         <div className="flex items-center space-x-2">
           <div className="w-6 h-6 bg-white rounded-full">
             {user ? (
-              <img src={user.image ?? `https://avatar.iran.liara.run/username?username=Unknown`} alt="User" />
+              <img src={user.image ?? user.picture ?? "https://avatar.iran.liara.run/username?username=Unknown"} alt="User" />
             ) : (
               <img src={`https://avatar.iran.liara.run/username?username=Unknown`} alt="Unknown User" />
             )}
           </div>
-          {session ? (
-            <button onClick={() => signOut({ callbackUrl: '/', redirect: true })} className="font-semibold">Sign out</button>
+          {user ? (
+            <button className="font-semibold">{user.name}</button>
           ) : (
-            <button onClick={() => signIn('luminux', { callbackUrl: '/chat' })} className="font-semibold">Sign in</button>
+            <button className="font-semibold">""</button>      
           )}
         </div>
         <div className="flex items-center space-x-4">
-          <a href="#" className="flex items-center space-x-1 text-gray-300 hover:text-white">
-            <Github size={20} />
-            <span>GitHub</span>
-          </a>
+          {user ? (
+            <button onClick={() => signOut({ callbackUrl: '/', redirect: true })} className="flex items-center space-x-1 text-gray-300 hover:text-white">Sign out</button>
+          ) : (
+            <button onClick={() => signIn('luminux', { callbackUrl: '/chat' })} className="flex items-center space-x-1 text-gray-300 hover:text-white">Sign in</button>
+          )}
         </div>
       </header>
 
