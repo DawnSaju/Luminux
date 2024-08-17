@@ -16,6 +16,15 @@ export default function Home() {
         <meta name="description" content="A comprehensive health support chatbot providing reliable information and guidance for a healthy life." />
         <meta name="keywords" content="healthcare, AI, chatbot, luminux, Luminux, dawnsaju, headstarter, sivaibala, abhishekshresta" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta property="og:title" content="Luminux" />
+        <meta property="og:description" content="A comprehensive health support chatbot providing reliable information and guidance for a healthy life." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://luminux.live" />
+        <meta property="og:image" content="https://github.com/DawnSaju/Luminux/blob/master/public/favicon.png" />
+        <meta property="og:site_name" content="Luminux" />
+
+        <meta name="keywords" content="health, chatbot, AI, support, guidance, healthy life" />
+        <meta name="author" content="Luminux Team" />
       </head>
       <body>
         <main>
