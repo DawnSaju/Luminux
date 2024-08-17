@@ -24,7 +24,7 @@ interface SociaNetworkslProps {
 
 const teamList: TeamProps[] = [
   {
-    imageUrl: "https://media.licdn.com/dms/image/v2/D4D35AQEigwtYamyGVQ/profile-framedphoto-shrink_200_200/profile-framedphoto-shrink_200_200/0/1709567111341?e=1723791600&v=beta&t=CTd5rISWCrnvfSYOJiz55JJJRaIU_FXDxf41j_RfK_Q",
+    imageUrl: "https://media.licdn.com/dms/image/v2/D4D35AQEigwtYamyGVQ/profile-framedphoto-shrink_800_800/profile-framedphoto-shrink_800_800/0/1709567111341?e=1724508000&v=beta&t=5o0PLne8TeVE-iclqdGAxY59MLSWLWBk-_M1HwXykrE",
     name: "Abhishek Shrestha",
     position: "Spokesperson & Software Tester",
     description: `Senior @Northern Kentucky University `,
